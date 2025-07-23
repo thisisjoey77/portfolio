@@ -1,7 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import TypewriterText from "../components/TypewriterText";
 
 export default function Home() {
+  const roles = [
+    "Computer Scientist",
+    "Developer", 
+    "Student",
+    "Leader"
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -22,9 +30,12 @@ export default function Home() {
             Joy Kim
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Computer Science Student & Researcher
-          </p>
+          <div className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto min-h-[2rem]">
+            <TypewriterText 
+              texts={roles} 
+              className="font-medium"
+            />
+          </div>
           
           <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
             Passionate about Quantum Computing, Informatics, and Educational Technology. 
