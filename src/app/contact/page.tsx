@@ -5,7 +5,7 @@ export default function ContactPage() {
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-white mb-6">Contact</h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Let's connect and discuss opportunities in computer science and research.
+            Let&apos;s connect and discuss opportunities in computer science and research.
           </p>
         </div>
         

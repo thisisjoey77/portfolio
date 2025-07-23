@@ -29,6 +29,10 @@ interface Repository {
   topics: string[];
 }
 
+// Constants moved outside component to avoid re-creation on every render
+const FEATURED_REPOS = ['schoolWeb', 'Tennix', 'NeulBom', 'MultiCult'];
+const OTHER_REPOS = ['CSLessons', 'BaksetballStatTracker', 'Visual-Disorder-VR', 'thisisjoey77'];
+
 export default function GitHubPage() {
   const [user, setUser] = useState<GitHubUser | null>(null);
   const [repos, setRepos] = useState<Repository[]>([]);
@@ -37,12 +41,6 @@ export default function GitHubPage() {
 
   // Replace with your GitHub username
   const GITHUB_USERNAME = 'thisisjoey77';
-  
-  // Featured repositories that should be displayed prominently
-  const FEATURED_REPOS = ['schoolWeb', 'Tennix', 'NeulBom', 'MultiCult'];
-  
-  // Other specific repositories to show
-  const OTHER_REPOS = ['CSLessons', 'BaksetballStatTracker', 'Visual-Disorder-VR', 'thisisjoey77'];
 
   useEffect(() => {
     const fetchGitHubData = async () => {
@@ -215,7 +213,7 @@ export default function GitHubPage() {
                 {/* Timeline Line */}
                 <div className="absolute left-8 top-0 bottom-0 w-0.5 timeline-line hidden md:block"></div>
                 
-                {repos.slice(0, FEATURED_REPOS.length).map((repo, index) => (
+                {repos.slice(0, FEATURED_REPOS.length).map((repo) => (
                   <div key={repo.id} className="relative mb-12 last:mb-0">
                     {/* Timeline Dot */}
                     <div className="absolute left-8 w-4 h-4 timeline-dot rounded-full z-10 transform -translate-x-1/2 top-8 hidden md:block"></div>
