@@ -1,26 +1,112 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --logo-primary: #3b82f6; /* Blue color from logo */
+  --logo-secondary: #8b5cf6; /* Purple accent */
+  --background-dark: #0f0f23;
+  --surface-dark: rgba(30, 41, 59, 0.5);
+  --surface-glass: rgba(51, 65, 85, 0.3);
+  --background: #0f0f23;
+  --foreground: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f0f23;
+    --foreground: #ffffff;
   }
 }
 
+html {
+  background: #0f0f23;
+  min-height: 100%;
+}
+
 body {
-  background: var(--background);
+  background: linear-gradient(135deg, 
+    #0f0f23 0%, 
+    #1e1b4b 25%, 
+    #312e81 50%, 
+    #1e1b4b 75%, 
+    #0f0f23 100%
+  );
+  background-attachment: fixed;
+  min-height: 100vh;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  position: relative;
+}
+
+/* Animated background overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 90% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(51, 65, 85, 0.2);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Button styles */
+.btn-primary {
+  background: var(--logo-primary);
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+}
+
+/* Navigation styles */
+.nav-item {
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-item:hover {
+  color: var(--logo-primary);
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--logo-primary);
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+
+/* Timeline styles */
+.timeline-dot {
+  background: var(--logo-primary);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+.timeline-line {
+  background: var(--logo-primary);
 }
